@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ColourBlind
+  m_Name: GreyScale
   m_Shader: {fileID: 4800000, guid: 5ce3c1dcc60e12b43bcdef3e64c55891, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

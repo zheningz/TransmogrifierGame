@@ -1,5 +1,4 @@
-﻿// Alan Zucconi
-// www.alanzucconi.com
+﻿// Modified from Alan Zucconi's code
 using UnityEngine;
 
 public enum ColorBlindMode

@@ -1,5 +1,4 @@
-﻿// Alan Zucconi
-// www.alanzucconi.com
+﻿// Modified from Alan Zucconi's shader
 Shader "Hidden/ChannelMixer"
 {
 	Properties
