@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9214310255070530877}
   - component: {fileID: 9214310255070530874}
   - component: {fileID: 9214310255070530875}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MirrorPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9214310255682667251}
   - component: {fileID: 9214310255682667253}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MirrorCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 257
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 0979a1a2df8fb4b4e98bae7c558b918b, type: 2}
   m_TargetDisplay: 0
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9214310256625063311}
   - component: {fileID: 9214310256625063308}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}

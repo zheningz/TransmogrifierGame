@@ -1,5 +1,11 @@
 using UnityEngine;
 
+public enum Hand
+{
+    Left,
+    Right,
+}
+
 // Physics hand controller using PID
 // https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller
 public class HandController : MonoBehaviour
@@ -10,6 +16,7 @@ public class HandController : MonoBehaviour
 
     [SerializeField] Rigidbody playerRigidBody;
     [SerializeField] Transform target;
+    [SerializeField] Hand hand;
     [SerializeField] float frequency = 50f;
     [SerializeField] float damping = 1f;
     [SerializeField] float rotationFrequency = 100f;
@@ -75,6 +82,15 @@ public class HandController : MonoBehaviour
         Vector3 force = displacementFromResting * climbForce;
         float drag = GetDrag();
 
+        if (hand == Hand.Left)
+        {
+            OVRInput.SetControllerVibration(1, drag, OVRInput.Controller.LTouch);
+        } 
+        else
+        {
+            OVRInput.SetControllerVibration(1, drag, OVRInput.Controller.RTouch);
+        }
+
         playerRigidBody.AddForce(force, ForceMode.Acceleration);
         playerRigidBody.AddForce(drag * -playerRigidBody.velocity * climbDrag, ForceMode.Acceleration);
     }
@@ -99,5 +115,13 @@ public class HandController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         isColliding = false;
+        if (hand == Hand.Left)
+        {
+            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+        }
+        else
+        {
+            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+        }
     }
 }
