@@ -5,33 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Spider-4.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/XR/Oculus/Interaction/Samples/Scenes/Examples/SnapExamples.unity
-    guid: 01ca63189b69e00488487d660224a315
-  - enabled: 0
-    path: Assets/Scenes/Human-VR.unity
-    guid: 3f469ee4e01c20e40b9298ee621de6ec
-  - enabled: 0
-    path: Assets/Scenes/Spider-8-VR.unity
-    guid: 8dd3d77884327ca4ea54c58f9aad82aa
-  - enabled: 0
-    path: Assets/Scenes/DarkDungeonLite.unity
-    guid: 00f87d8c32091684ba92023f6ce8b143
-  - enabled: 0
-    path: Assets/Scenes/Mammal-VR.unity
-    guid: 362cadbb1d3f7bc4daf7e9bb32c0c25c
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/HomeScene.unity
+    guid: d519536aeb846fd448881b4974aa36aa
+  - enabled: 1
     path: Assets/Scenes/Spider-VR.unity
     guid: bc27d5d82905f8c46976c5f2e8d97cba
   - enabled: 1
-    path: Assets/Scenes/Starting Scene.unity
+    path: Assets/Scenes/Paused.unity
     guid: b41a0a74ab058ef48a2fc155f4c0ac56
-  - enabled: 0
-    path: Assets/Scenes/HandGrabExamples.unity
-    guid: d2fcfec01816d2940a35b80dd70bf951
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}
