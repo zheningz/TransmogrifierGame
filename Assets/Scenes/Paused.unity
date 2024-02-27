@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 585430251}
   - component: {fileID: 585430250}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -605,19 +605,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 585430251}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1477180593}
-        m_TargetAssemblyTypeName: PanelPause, Assembly-CSharp
-        m_MethodName: RestartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &585430251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,7 +1230,7 @@ GameObject:
   - component: {fileID: 1840822942}
   - component: {fileID: 1840822941}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1312,19 +1300,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1840822942}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1477180593}
-        m_TargetAssemblyTypeName: PanelPause, Assembly-CSharp
-        m_MethodName: QuitToHome
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1840822942
 MonoBehaviour:
   m_ObjectHideFlags: 0

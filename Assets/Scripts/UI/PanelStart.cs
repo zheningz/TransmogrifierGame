@@ -1,21 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PanelStart : MonoBehaviour
 {
-    public void StartGame()
+    void Start()
     {
-        SceneManager.LoadScene("Spider-VR");
-    }
+        transform.Find("StartButton").GetComponent<Button>()
+            .onClick.AddListener(() =>
+            {
+                gameObject.SetActive(false);
+                SceneManager.LoadScene("Spider-VR");
+            });
 
-    public void QuitGame()
-    {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.Exit(0);
-        #else
-            Application.Quit();
-        #endif
+        transform.Find("QuitButton").GetComponent<Button>()
+            .onClick.AddListener(() =>
+            {
+                #if UNITY_EDITOR
+                                UnityEditor.EditorApplication.Exit(0);
+                #else
+                                            Application.Quit();
+                #endif
+            });
     }
 }

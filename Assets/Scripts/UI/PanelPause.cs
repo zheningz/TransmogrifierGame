@@ -6,18 +6,18 @@ using UnityEngine.UI;
 
 public class PanelPause : MonoBehaviour
 {
-    public void ContinueGame()
+    void Start()
     {
-        GameManager.GetInstance().sceneController_root.Continue();
-    }
+        transform.Find("RestartButton").GetComponent<Button>()
+            .onClick.AddListener(() =>
+            {
+                SceneManager.LoadScene("Spider-VR");
+            });
 
-    public void RestartGame()
-    {
-        SceneManager.LoadScene("Spider-VR");
-    }
-
-    public void QuitToHome()
-    {
-        SceneManager.LoadScene("HomeScene");
+        transform.Find("QuitButton").GetComponent<Button>()
+            .onClick.AddListener(() =>
+            {
+                SceneManager.LoadScene("HomeScene");
+            });
     }
 }

@@ -1,11 +1,5 @@
 using UnityEngine;
 
-public enum Hand
-{
-    Left,
-    Right,
-}
-
 // Physics hand controller using PID
 // https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller
 public class HandController : MonoBehaviour
