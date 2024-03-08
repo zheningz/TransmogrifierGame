@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class FlyController : MonoBehaviour
@@ -5,6 +6,7 @@ public class FlyController : MonoBehaviour
     Rigidbody rigidBody;
 
     [SerializeField] Rigidbody playerRigidBody;
+    [SerializeField] Transform playerTransform;
     [SerializeField] Transform target;
     [SerializeField] Hand hand;
     [SerializeField] float frequency = 10f;
@@ -12,9 +14,9 @@ public class FlyController : MonoBehaviour
     [SerializeField] float rotationFrequency = 100f;
     [SerializeField] float rotationDamping = 0.9f;
 
-    [SerializeField] float flyThreshold = 5.0f;
-    [SerializeField] float flyForce = 1000f;
-    [SerializeField] float glideForce = 500f;
+    [SerializeField] float flyThreshold = 3.0f;
+    [SerializeField] float flyForce = 5f;
+    [SerializeField] float glideForce = 3f;
 
     void Start()
     {
@@ -30,14 +32,21 @@ public class FlyController : MonoBehaviour
         PIDMovement();
         PIDRotation();
 
-        Vector3 velocityOffset = rigidBody.velocity - playerRigidBody.velocity;
-        if (velocityOffset.y > flyThreshold)
-            Fly(velocityOffset);
+        Vector3 velocityOffset = playerRigidBody.velocity - rigidBody.velocity;
+        // Debug.Log("Hand velocity: " + rigidBody.velocity);
+        Debug.Log("Body velocity: " + playerRigidBody.velocity);
 
-/*        if (playerRigidBody.velocity.y > 3)
+        if (velocityOffset.y > flyThreshold)
+        {
+            Debug.Log("Offset" + velocityOffset);
+            Fly(velocityOffset);
+        }
+
+        // if (playerRigidBody.velocity.y > 3)
+        if (IsWingWide())
         {
             Glide();
-        }*/
+        }
     }
 
     void PIDMovement()
@@ -75,12 +84,32 @@ public class FlyController : MonoBehaviour
 
     void Fly(Vector3 speedOffset)
     {
-        Vector3 force = - speedOffset * flyForce;
+        Vector3 force = speedOffset * flyForce;
+        Debug.Log("Force: " + -speedOffset * flyForce);
+
+/*        if (hand == Hand.Left)
+        {
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
+        }
+        else
+        {
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+        }*/
+
         playerRigidBody.AddForce(force, ForceMode.Acceleration);
     }
 
     void Glide()
     {
         // calculate direction & glide
+        Vector3 force = new Vector3(0, glideForce,0);
+        playerRigidBody.AddForce(force, ForceMode.Acceleration);
+    }
+
+    bool IsWingWide()
+    {
+        if (Math.Abs(playerTransform.position.z - transform.position.z) > 0.5f)
+            return true;
+        return false;
     }
 }
