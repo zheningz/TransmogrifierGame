@@ -11,13 +11,13 @@ public class PanelSelect : MonoBehaviour
         transform.Find("SpiderButton").GetComponent<Button>()
             .onClick.AddListener(() =>
             {
-                SceneManager.LoadScene("Spider-VR");
+                SceneManager.LoadScene("Spider-Dungeon");
             });
 
         transform.Find("BatButton").GetComponent<Button>()
             .onClick.AddListener(() =>
             {
-                SceneManager.LoadScene("Bat-VR");
+                SceneManager.LoadScene("Bat-Dungeon");
             });
 
         transform.Find("CatButton").GetComponent<Button>()

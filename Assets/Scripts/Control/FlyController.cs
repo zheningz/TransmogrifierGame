@@ -2,87 +2,85 @@ using UnityEngine;
 
 public class FlyController : MonoBehaviour
 {
-    bool isSliding = false;
-    Vector3 flyForce;
-    Vector3 slideForce;
+    Rigidbody rigidBody;
 
-    [SerializeField] GameObject upperTrigger;
-    [SerializeField] GameObject lowerTrigger;
-    [SerializeField] Rigidbody playerRigidbody;
-    public Transform userCamera;
+    [SerializeField] Rigidbody playerRigidBody;
+    [SerializeField] Transform target;
     [SerializeField] Hand hand;
-    [SerializeField] float flyUp = 20.0f;
-    [SerializeField] float slideUp = 10.0f;
-    [SerializeField] float flyForward = 0.0f;
-    [SerializeField] float slideForward = 0.0f;
+    [SerializeField] float frequency = 10f;
+    [SerializeField] float damping = 1f;
+    [SerializeField] float rotationFrequency = 100f;
+    [SerializeField] float rotationDamping = 0.9f;
 
-    private void Start()
+    [SerializeField] float flyThreshold = 5.0f;
+    [SerializeField] float flyForce = 1000f;
+    [SerializeField] float glideForce = 500f;
+
+    void Start()
     {
-        // camera forward
+        transform.position = target.position;
+        transform.rotation = target.rotation;
 
-        flyForce = new Vector3(flyForward, flyUp, 0.0f);
-        slideForce = new Vector3(slideForward, slideUp, 0.0f);
+        rigidBody = GetComponent<Rigidbody>();
+        rigidBody.maxAngularVelocity = float.PositiveInfinity;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        /*if (isSliding)
-        {
-            // Sliding
-            Vector3 force = new Vector3(0.0f, flyForce, 0.0f);
-            playerRigidbody.AddForce(force, ForceMode.Acceleration);
+        PIDMovement();
+        PIDRotation();
 
-            if (hand == Hand.Left)
-            {
-                OVRInput.SetControllerVibration(1, 0.5f, OVRInput.Controller.LTouch);
-            }
-            else
-            {
-                OVRInput.SetControllerVibration(1, 0.5f, OVRInput.Controller.RTouch);
-            }
-        }
-        else
+        Vector3 velocityOffset = rigidBody.velocity - playerRigidBody.velocity;
+        if (velocityOffset.y > flyThreshold)
+            Fly(velocityOffset);
+
+/*        if (playerRigidBody.velocity.y > 3)
         {
-            if (hand == Hand.Left)
-            {
-                OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
-            }
-            else
-            {
-                OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
-            }
+            Glide();
         }*/
     }
 
-    private void Fly()
+    void PIDMovement()
     {
-        if (hand == Hand.Left)
-        {
-            OVRInput.SetControllerVibration(1, 0.5f, OVRInput.Controller.LTouch);
-        }
-        else
-        {
-            OVRInput.SetControllerVibration(1, 0.5f, OVRInput.Controller.RTouch);
-        }
-        playerRigidbody.AddForce(flyForce, ForceMode.Acceleration);
+        float kp = (6f * frequency) * (6f * frequency) * 0.25f;
+        float kd = 4.5f * frequency * damping;
+        float g = 1 / (1 + kd * Time.fixedDeltaTime + kp * Time.fixedDeltaTime * Time.fixedDeltaTime);
+        float ksg = kp * g;
+        float kdg = (kd + kp * Time.fixedDeltaTime) * g;
+        Vector3 force = (target.position - transform.position) * ksg + (playerRigidBody.velocity - rigidBody.velocity) * kdg;
+        rigidBody.AddForce(force, ForceMode.Acceleration);
     }
 
-    private void OnTriggerEnter(Collider collider)
+    void PIDRotation()
     {
-        Debug.Log("Collision enter");
-
-        if (collider.gameObject.Equals(upperTrigger) || collider.gameObject.Equals(lowerTrigger))
+        float kp = (6f * rotationFrequency) * (6f * rotationFrequency) * 0.25f;
+        float kd = 4.5f * rotationFrequency * rotationDamping;
+        float g = 1 / (1 + kd * Time.fixedDeltaTime + kp * Time.fixedDeltaTime * Time.fixedDeltaTime);
+        float ksg = kp * g;
+        float kdg = (kd + kp * Time.fixedDeltaTime) * g;
+        Quaternion q = target.rotation * Quaternion.Inverse(transform.rotation);
+        if (q.w < 0)
         {
-            Fly();
+            q.x = -q.x;
+            q.y = -q.y;
+            q.z = -q.z;
+            q.w = -q.w;
         }
+        q.ToAngleAxis(out float angle, out Vector3 axis);
+        axis.Normalize();
+        axis *= Mathf.Deg2Rad;
+        Vector3 torque = ksg * axis * angle + -rigidBody.angularVelocity * kdg;
+        rigidBody.AddTorque(torque, ForceMode.Acceleration);
     }
 
-    private void OnTriggerExit(Collider collider)
+    void Fly(Vector3 speedOffset)
     {
-        if (collider.gameObject.Equals(upperTrigger) || collider.gameObject.Equals(lowerTrigger))
-        {
-            Fly();
-            // isSliding = false;
-        }
+        Vector3 force = - speedOffset * flyForce;
+        playerRigidBody.AddForce(force, ForceMode.Acceleration);
+    }
+
+    void Glide()
+    {
+        // calculate direction & glide
     }
 }

@@ -11,7 +11,7 @@ public class PanelPause : MonoBehaviour
         transform.Find("RestartButton").GetComponent<Button>()
             .onClick.AddListener(() =>
             {
-                SceneManager.LoadScene("Spider-VR");
+                SceneManager.LoadScene("Spider-Dungeon");
             });
 
         transform.Find("QuitButton").GetComponent<Button>()

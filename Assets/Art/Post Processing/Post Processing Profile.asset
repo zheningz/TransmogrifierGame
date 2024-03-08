@@ -1,5 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4355758297360075713
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  focusDistance:
+    overrideState: 1
+    value: 3
+  aperture:
+    overrideState: 0
+    value: 5.6
+  focalLength:
+    overrideState: 0
+    value: 50
+  kernelSize:
+    overrideState: 0
+    value: 1
 --- !u!114 &-3264689391722718236
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -12,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb84e30e02715445aeb9959894e3b4d, type: 3}
   m_Name: ColorGrading
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -77,31 +105,31 @@ MonoBehaviour:
     value: 0
   mixerRedOutRedIn:
     overrideState: 1
-    value: 56.67
+    value: 80
   mixerRedOutGreenIn:
     overrideState: 1
-    value: 43.33
+    value: 20
   mixerRedOutBlueIn:
     overrideState: 0
     value: 0
   mixerGreenOutRedIn:
-    overrideState: 1
-    value: 55.8
+    overrideState: 0
+    value: 70
   mixerGreenOutGreenIn:
     overrideState: 1
-    value: 44.2
+    value: 26
   mixerGreenOutBlueIn:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 74
   mixerBlueOutRedIn:
     overrideState: 0
     value: 0
   mixerBlueOutGreenIn:
     overrideState: 1
-    value: 24.17
+    value: 14
   mixerBlueOutBlueIn:
     overrideState: 1
-    value: 75.83
+    value: 86
   lift:
     overrideState: 0
     value: {x: 1, y: 1, z: 1, w: 0}
@@ -1325,3 +1353,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: -3264689391722718236}
+  - {fileID: -4355758297360075713}

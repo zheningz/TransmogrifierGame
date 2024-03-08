@@ -12,7 +12,7 @@ public class PanelStart : MonoBehaviour
             .onClick.AddListener(() =>
             {
                 gameObject.SetActive(false);
-                SceneManager.LoadScene("Spider-VR");
+                // SceneManager.LoadScene("Spider-VR");
             });
 
         transform.Find("QuitButton").GetComponent<Button>()
