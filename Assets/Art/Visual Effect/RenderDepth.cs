@@ -9,11 +9,4 @@ public class RenderDepth : MonoBehaviour
     {
         GetComponent<Camera>().depthTextureMode = DepthTextureMode.Depth;
     }
-
-    [ImageEffectOpaque]
-
-    private void OnRenderImage(RenderTexture source, RenderTexture destination)
-    {
-        
-    }
 }

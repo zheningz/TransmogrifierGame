@@ -33,18 +33,14 @@ public class FlyController : MonoBehaviour
         PIDRotation();
 
         Vector3 velocityOffset = playerRigidBody.velocity - rigidBody.velocity;
-        // Debug.Log("Hand velocity: " + rigidBody.velocity);
-        Debug.Log("Body velocity: " + playerRigidBody.velocity);
 
         if (velocityOffset.y > flyThreshold)
         {
-            Debug.Log("Offset" + velocityOffset);
             Fly(velocityOffset);
         }
-
-        // if (playerRigidBody.velocity.y > 3)
-        if (IsWingWide())
+        else if (IsWingWide())
         {
+            Debug.Log("glide");
             Glide();
         }
     }

@@ -57103,13 +57103,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 481164, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 556111334}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 100012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1359626874}
-    - targetCorrespondingSourceObject: {fileID: 100012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1359626873}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
 --- !u!4 &1359626869 stripped
 Transform:
@@ -57126,38 +57120,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 477154, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
   m_PrefabInstance: {fileID: 1359626868}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1359626872 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-  m_PrefabInstance: {fileID: 1359626868}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1359626873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359626872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eefe8d1e6a248bc4bbaa05206a8b4cc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1359626874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359626872}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49cfffab0dfc3cb4780524b9658e38cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  slider: 0
-  replacementShader: {fileID: 4800000, guid: 763fc137648fd0e4aabd0fab1d5c56b4, type: 3}
 --- !u!1001 &1360217031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75140,7 +75102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c5fd0be9eec1f43910c6719f1a1376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  percentage: 0
+  percentage: 0.7
 --- !u!4 &1782087285
 Transform:
   m_ObjectHideFlags: 0

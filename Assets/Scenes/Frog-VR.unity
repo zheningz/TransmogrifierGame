@@ -709,7 +709,7 @@ PrefabInstance:
     - target: {fileID: 9214310256625063308, guid: 83ea76904b0ded14393bc755026a28db, type: 3}
       propertyPath: userCamera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 334855925}
     - target: {fileID: 9214310256625063309, guid: 83ea76904b0ded14393bc755026a28db, type: 3}
       propertyPath: m_Name
       value: Mirror
@@ -828,15 +828,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691832418928178, guid: 0187bdd962557471faee34c9b592135c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4799999
+      value: 3.31
       objectReference: {fileID: 0}
     - target: {fileID: 4691832418928178, guid: 0187bdd962557471faee34c9b592135c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.48
+      value: 3.31
       objectReference: {fileID: 0}
     - target: {fileID: 4691832418928178, guid: 0187bdd962557471faee34c9b592135c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.4799999
+      value: 3.31
       objectReference: {fileID: 0}
     - target: {fileID: 4691832418928178, guid: 0187bdd962557471faee34c9b592135c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -874,6 +874,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 95172607052263456, guid: 0187bdd962557471faee34c9b592135c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95172607052263456, guid: 0187bdd962557471faee34c9b592135c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 002143a0397b76740ad3d87732f3c467, type: 2}
+    - target: {fileID: 95172607052263456, guid: 0187bdd962557471faee34c9b592135c, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 136685980256629510, guid: 0187bdd962557471faee34c9b592135c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -894,6 +906,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1644373995442134, guid: 0187bdd962557471faee34c9b592135c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 441477324}
+    - targetCorrespondingSourceObject: {fileID: 1644373995442134, guid: 0187bdd962557471faee34c9b592135c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 441477329}
   m_SourcePrefab: {fileID: 100100000, guid: 0187bdd962557471faee34c9b592135c, type: 3}
 --- !u!4 &441477198 stripped
 Transform:
@@ -1684,18 +1699,18 @@ MonoBehaviour:
   head:
     vrTarget: {fileID: 1962311330}
     ikTarget: {fileID: 14208873}
-    trackingPositionOffset: {x: 0, y: 0, z: 0}
+    trackingPositionOffset: {x: 0, y: -0.38, z: -0.52}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
   leftHand:
     vrTarget: {fileID: 491487727}
     ikTarget: {fileID: 1599729861}
     trackingPositionOffset: {x: 0, y: 0, z: 0}
-    trackingRotationOffset: {x: 0, y: 0, z: 0}
+    trackingRotationOffset: {x: 154, y: -140, z: 0}
   rightHand:
     vrTarget: {fileID: 282712987}
-    ikTarget: {fileID: 2067261360}
+    ikTarget: {fileID: 810558461}
     trackingPositionOffset: {x: 0, y: 0, z: 0}
-    trackingRotationOffset: {x: 0, y: 0, z: 0}
+    trackingRotationOffset: {x: -155, y: 140, z: 0}
   headBodyPositionOffset: {x: 0, y: 0, z: 0}
   headBodyYawOffset: 0
 --- !u!114 &441477326
@@ -1714,6 +1729,22 @@ MonoBehaviour:
   - m_Rig: {fileID: 1799078217}
     m_Active: 1
   m_Effectors: []
+--- !u!111 &441477329
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441477323}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400006, guid: 75116d3ad847f4b308aea41d92d1efb8, type: 3}
+  m_Animations:
+  - {fileID: 7400006, guid: 75116d3ad847f4b308aea41d92d1efb8, type: 3}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &454520351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,6 +1755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 454520352}
   - component: {fileID: 454520353}
+  - component: {fileID: 454520354}
   m_Layer: 0
   m_Name: Left Arm IK
   m_TagString: Untagged
@@ -1760,7 +1792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeda7bfbf984f2a4da5ab4b8967b115d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0.5
   m_Data:
     m_Root: {fileID: 441477235}
     m_Mid: {fileID: 441477236}
@@ -1770,6 +1802,29 @@ MonoBehaviour:
     m_TargetPositionWeight: 1
     m_TargetRotationWeight: 1
     m_HintWeight: 1
+    m_MaintainTargetPositionOffset: 0
+    m_MaintainTargetRotationOffset: 0
+--- !u!114 &454520354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454520351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796b75e345bd64d47a31edd757bd2670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weight: 1
+  m_Data:
+    m_Root: {fileID: 441477236}
+    m_Tip: {fileID: 441477237}
+    m_Target: {fileID: 1599729861}
+    m_ChainRotationWeight: 1
+    m_TipRotationWeight: 1
+    m_MaxIterations: 15
+    m_Tolerance: 0.0001
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
 --- !u!1 &491487726
@@ -1844,6 +1899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 538913507}
   - component: {fileID: 538913508}
+  - component: {fileID: 538913509}
   m_Layer: 0
   m_Name: Right Arm IK
   m_TagString: Untagged
@@ -1880,7 +1936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeda7bfbf984f2a4da5ab4b8967b115d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0.5
   m_Data:
     m_Root: {fileID: 441477220}
     m_Mid: {fileID: 441477221}
@@ -1890,6 +1946,29 @@ MonoBehaviour:
     m_TargetPositionWeight: 1
     m_TargetRotationWeight: 1
     m_HintWeight: 1
+    m_MaintainTargetPositionOffset: 0
+    m_MaintainTargetRotationOffset: 0
+--- !u!114 &538913509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538913506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796b75e345bd64d47a31edd757bd2670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weight: 1
+  m_Data:
+    m_Root: {fileID: 441477221}
+    m_Tip: {fileID: 441477222}
+    m_Target: {fileID: 810558461}
+    m_ChainRotationWeight: 1
+    m_TipRotationWeight: 1
+    m_MaxIterations: 15
+    m_Tolerance: 0.0001
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
 --- !u!1 &810558460
@@ -2223,7 +2302,7 @@ Transform:
   m_GameObject: {fileID: 1076153721}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.231, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2525,7 +2604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1376100358
 Transform:
   m_ObjectHideFlags: 0
@@ -3178,6 +3257,7 @@ GameObject:
   - component: {fileID: 2022304616}
   - component: {fileID: 2022304615}
   - component: {fileID: 2022304614}
+  - component: {fileID: 2022304619}
   m_Layer: 6
   m_Name: Hand Right
   m_TagString: Player
@@ -3207,7 +3287,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022304612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db399815c3b875442ab8009cf06cb0a2, type: 3}
   m_Name: 
@@ -3219,7 +3299,7 @@ MonoBehaviour:
   damping: 1
   rotationFrequency: 100
   rotationDamping: 0.9
-  climbForce: 500
+  climbForce: 400
   climbDrag: 0
 --- !u!54 &2022304615
 Rigidbody:
@@ -3261,7 +3341,7 @@ BoxCollider:
     m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -3319,6 +3399,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022304612}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2022304619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022304612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0ebac8e12bc4049a9dd10dd2108281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frog: {fileID: 441477323}
+  playerRigidBody: {fileID: 334855930}
+  target: {fileID: 810558461}
+  hand: 1
+  frequency: 10
+  damping: 1
+  rotationFrequency: 100
+  rotationDamping: 0.9
+  climbForce: 400
 --- !u!1 &2059685655
 GameObject:
   m_ObjectHideFlags: 0
@@ -3335,7 +3436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2059685656
 Transform:
   m_ObjectHideFlags: 0
@@ -3422,6 +3523,7 @@ GameObject:
   - component: {fileID: 2097754171}
   - component: {fileID: 2097754170}
   - component: {fileID: 2097754174}
+  - component: {fileID: 2097754175}
   m_Layer: 6
   m_Name: Hand Left
   m_TagString: Player
@@ -3484,7 +3586,7 @@ BoxCollider:
     m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -3549,7 +3651,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097754168}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db399815c3b875442ab8009cf06cb0a2, type: 3}
   m_Name: 
@@ -3561,8 +3663,29 @@ MonoBehaviour:
   damping: 1
   rotationFrequency: 100
   rotationDamping: 0.9
-  climbForce: 500
+  climbForce: 400
   climbDrag: 0
+--- !u!114 &2097754175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097754168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0ebac8e12bc4049a9dd10dd2108281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frog: {fileID: 441477323}
+  playerRigidBody: {fileID: 334855930}
+  target: {fileID: 1599729861}
+  hand: 0
+  frequency: 10
+  damping: 1
+  rotationFrequency: 100
+  rotationDamping: 0.9
+  climbForce: 400
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
