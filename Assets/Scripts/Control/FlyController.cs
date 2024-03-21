@@ -8,6 +8,7 @@ public class FlyController : MonoBehaviour
     [SerializeField] Rigidbody playerRigidBody;
     [SerializeField] Transform playerTransform;
     [SerializeField] Transform target;
+    [SerializeField] Transform otherTarget;
     [SerializeField] Hand hand;
     [SerializeField] float frequency = 10f;
     [SerializeField] float damping = 1f;
@@ -17,6 +18,8 @@ public class FlyController : MonoBehaviour
     [SerializeField] float flyThreshold = 3.0f;
     [SerializeField] float flyForce = 5f;
     [SerializeField] float glideForce = 3f;
+    [SerializeField] float forwardForce = 2f;
+    [SerializeField] float torqueForce = 20f;
 
     void Start()
     {
@@ -40,7 +43,6 @@ public class FlyController : MonoBehaviour
         }
         else if (IsWingWide())
         {
-            Debug.Log("glide");
             Glide();
         }
     }
@@ -81,7 +83,7 @@ public class FlyController : MonoBehaviour
     void Fly(Vector3 speedOffset)
     {
         Vector3 force = speedOffset * flyForce;
-        Debug.Log("Force: " + -speedOffset * flyForce);
+        // Debug.Log("Force: " + -speedOffset * flyForce);
 
 /*        if (hand == Hand.Left)
         {
@@ -98,13 +100,21 @@ public class FlyController : MonoBehaviour
     void Glide()
     {
         // calculate direction & glide
-        Vector3 force = new Vector3(0, glideForce,0);
-        playerRigidBody.AddForce(force, ForceMode.Acceleration);
+        if (hand == Hand.Right)
+        {
+            Vector3 line = target.position - otherTarget.position;
+
+            Vector3 force = new Vector3(forwardForce, glideForce * Math.Abs(target.position.z - otherTarget.position.z), 0);
+            playerRigidBody.AddForce(force, ForceMode.Acceleration);
+            // playerRigidBody.AddTorque(new Vector3(0, glideForce * line.x, 0), ForceMode.Acceleration);
+
+            Debug.Log("glide dir = " + force);
+        }
     }
 
     bool IsWingWide()
     {
-        if (Math.Abs(playerTransform.position.z - transform.position.z) > 0.5f)
+        if (Math.Abs(target.position.z - otherTarget.position.z) > 1.0f)
             return true;
         return false;
     }

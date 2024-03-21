@@ -6,6 +6,7 @@ public class JumpController : MonoBehaviour
     Rigidbody rigidBody;
     Vector3 previousPosition;
     bool isColliding;
+    bool isJumping; 
 
     public GameObject frog;
     Animator anim;
@@ -37,8 +38,11 @@ public class JumpController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            anim.SetTrigger("Jump");
+            //anim.SetTrigger("Jump");
+            anim.SetTrigger("Tongue");
         }
+
+
     }
 
     void FixedUpdate()
@@ -47,7 +51,12 @@ public class JumpController : MonoBehaviour
         PIDRotation();
         if (isColliding)
             HookesLaw();
-            
+         
+        if (isJumping)
+        {
+            anim.SetTrigger("Jump");
+            isJumping = false;
+        }
     }
 
     void PIDMovement()
@@ -101,7 +110,7 @@ public class JumpController : MonoBehaviour
 
         if (playerRigidBody.velocity.y > 1.0f)
         {
-            Debug.Log("Jump once");
+            isJumping = true;
         }
     }
 

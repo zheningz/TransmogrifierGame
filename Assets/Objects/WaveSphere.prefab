@@ -96,5 +96,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3028161754ed342a4d9d2d672decf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  destroyThreshold: 50
+  speed: 50
+  destroyThreshold: 100

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -883,8 +883,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 002143a0397b76740ad3d87732f3c467, type: 2}
     - target: {fileID: 95172607052263456, guid: 0187bdd962557471faee34c9b592135c, type: 3}
-      propertyPath: m_ApplyRootMotion
+      propertyPath: m_UpdateMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95172607052263456, guid: 0187bdd962557471faee34c9b592135c, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 136685980256629510, guid: 0187bdd962557471faee34c9b592135c, type: 3}
       propertyPath: m_Enabled
@@ -906,9 +910,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1644373995442134, guid: 0187bdd962557471faee34c9b592135c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 441477324}
-    - targetCorrespondingSourceObject: {fileID: 1644373995442134, guid: 0187bdd962557471faee34c9b592135c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 441477329}
   m_SourcePrefab: {fileID: 100100000, guid: 0187bdd962557471faee34c9b592135c, type: 3}
 --- !u!4 &441477198 stripped
 Transform:
@@ -1699,7 +1700,7 @@ MonoBehaviour:
   head:
     vrTarget: {fileID: 1962311330}
     ikTarget: {fileID: 14208873}
-    trackingPositionOffset: {x: 0, y: -0.38, z: -0.52}
+    trackingPositionOffset: {x: 0, y: -0.38, z: -0.5}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
   leftHand:
     vrTarget: {fileID: 491487727}
@@ -1729,22 +1730,6 @@ MonoBehaviour:
   - m_Rig: {fileID: 1799078217}
     m_Active: 1
   m_Effectors: []
---- !u!111 &441477329
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441477323}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400006, guid: 75116d3ad847f4b308aea41d92d1efb8, type: 3}
-  m_Animations:
-  - {fileID: 7400006, guid: 75116d3ad847f4b308aea41d92d1efb8, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &454520351
 GameObject:
   m_ObjectHideFlags: 0
@@ -3356,7 +3341,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022304612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3601,7 +3586,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097754168}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
