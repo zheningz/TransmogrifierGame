@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject canvas;
+
     void Update()
     {
-        if (OVRInput.Get(OVRInput.Button.Start))
+        if (OVRInput.GetDown(OVRInput.Button.Start))
         {
-            SceneManager.LoadScene("Paused");
+            canvas.SetActive(!canvas.activeSelf);
         }
     }
 }

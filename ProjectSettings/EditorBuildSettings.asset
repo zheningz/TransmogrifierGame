@@ -5,8 +5,8 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Home.unity
+  - enabled: 1
+    path: Assets/Scenes/Home-Dungeon.unity
     guid: d519536aeb846fd448881b4974aa36aa
   - enabled: 0
     path: Assets/Scenes/Bat-VR.unity
@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Spider-VR.unity
     guid: bc27d5d82905f8c46976c5f2e8d97cba
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Spider-Dungeon.unity
     guid: 72540b6977e0ebc4283082233af39a2d
   - enabled: 1
