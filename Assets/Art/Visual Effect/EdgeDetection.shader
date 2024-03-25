@@ -2,80 +2,98 @@
 {
     Properties
     {
-        _MainTex("Texture", 2D) = "white" {}
-        _Threshold("Threshold", float) = 0.01
-        _EdgeColor("Edge color", Color) = (0,0,0,1)
+        _EdgeColor("Edge colour", Color) = (0,0,0,1)
+        _SampleDistance("Sample distance", Float) = 1.0
+        _NormalSensitivity("_NormalSensitivity", Range(0, 2)) = 1
+        _DepthSensitivity("_DepthSensitivity", Range(0, 2)) = 1
     }
-        SubShader
+
+    SubShader
+    {
+        Tags
         {
-            // No culling or depth
-            Cull Off ZWrite Off ZTest Always
-
-            Pass
-            {
-                CGPROGRAM
-                #pragma vertex vert
-                #pragma fragment frag
-
-                #include "UnityCG.cginc"
-
-                struct appdata
-                {
-                    float4 vertex : POSITION;
-                    float2 uv : TEXCOORD0;
-                };
-
-                struct v2f
-                {
-                    float2 uv : TEXCOORD0;
-                    float4 vertex : SV_POSITION;
-                };
-
-                sampler2D _CameraDepthNormalsTexture;
-
-                v2f vert(appdata v)
-                {
-                    v2f o;
-                    o.vertex = UnityObjectToClipPos(v.vertex);
-                    o.uv = v.uv;
-                    return o;
-                }
-
-                sampler2D _MainTex;
-                float4 _MainTex_TexelSize;
-                float _Threshold;
-                fixed4 _EdgeColor;
-
-                float4 GetPixelValue(in float2 uv) {
-                    half3 normal;
-                    float depth;
-                    DecodeDepthNormal(tex2D(_CameraDepthNormalsTexture, uv), depth, normal);
-                    return fixed4(normal, depth);
-                }
-
-                fixed4 frag(v2f i) : SV_Target
-                {
-                    fixed4 col = tex2D(_MainTex, i.uv);
-                    fixed4 orValue = GetPixelValue(i.uv);
-                    float2 offsets[8] = {
-                        float2(-1, -1),
-                        float2(-1, 0),
-                        float2(-1, 1),
-                        float2(0, -1),
-                        float2(0, 1),
-                        float2(1, -1),
-                        float2(1, 0),
-                        float2(1, 1)
-                    };
-                    fixed4 sampledValue = fixed4(0,0,0,0);
-                    for (int j = 0; j < 8; j++) {
-                        sampledValue += GetPixelValue(i.uv + offsets[j] * _MainTex_TexelSize.xy);
-                    }
-                    sampledValue /= 8;
-
-                    return lerp(col, _EdgeColor, step(_Threshold, length(orValue - sampledValue)));
-                }
-                ENDCG
-            }
+            "Queue" = "Geometry+550"
+            "RenderType" = "Opaque"
         }
+        CGINCLUDE
+
+        #include "UnityCG.cginc"
+
+        fixed4 _EdgeColour;
+        float _SampleDistance;
+        float _NormalSensitivity;
+        float _DepthSensitivity;
+        sampler2D _CameraDepthNormalsTexture;
+
+        struct v2f
+        {
+            float4 uv[5] : TEXCOORD0;
+            float4 pos : SV_POSITION;
+        };
+
+        v2f vert(appdata_img v)
+        {
+            v2f o;
+            o.pos = UnityObjectToClipPos(v.vertex);
+
+            float4 uv = ComputeScreenPos(o.pos);
+            o.uv[0] = uv;
+
+            float2 size = float2(1.0 / 1920.0, 1.0 / 1920.0);
+
+            o.uv[1] = float4((uv.xy + size * fixed2(1, 1) * _SampleDistance), uv.zw);
+            o.uv[2] = float4((uv.xy + size * fixed2(-1, -1) * _SampleDistance), uv.zw);
+            o.uv[3] = float4((uv.xy + size * fixed2(-1, 1) * _SampleDistance), uv.zw);
+            o.uv[4] = float4((uv.xy + size * fixed2(1, -1) * _SampleDistance), uv.zw);
+
+            return o;
+        }
+
+        half CheckSame(half4 center, half4 sample)
+        {
+            half2 centerNormal = center, xy;
+            float centerDepth = DecodeFloatRG(center.zw);
+            half2 sampleNormal = sample.xy;
+            float sampleDepth = DecodeFloatRG(sample.xw);
+
+            half2 diffNormal = abs(centerNormal - sampleNormal) * _NormalSensitivity;
+            int isSameNormal = (diffNormal.x + diffNormal.y) < 0.1;
+            float diffDepth = abs(centerDepth - sampleDepth) * _DepthSensitivity;
+            int isSameDepth = diffDepth < 0.1 * centerDepth;
+
+            return isSameNormal * isSameDepth ? 1.0 : 0.0;
+        }
+
+        fixed4 fragRobertsCrossDepthAndNormal(v2f i) : SV_Target
+        {
+            float4 sample1 = tex2Dproj(_CameraDepthNormalsTexture, i.uv[1]);
+            float4 sample2 = tex2Dproj(_CameraDepthNormalsTexture, i.uv[2]);
+            float4 sample3 = tex2Dproj(_CameraDepthNormalsTexture, i.uv[3]);
+            float4 sample4 = tex2Dproj(_CameraDepthNormalsTexture, i.uv[4]);
+
+            half edge = 1.0;
+            edge *= CheckSame(sample1, sample2);
+            edge *= CheckSame(sample3, sample4);
+
+            if (edge < 0.5)
+                return _EdgeColour;
+            else
+                discard;
+            return 0;
+        }
+
+        ENDCG
+
+        Pass
+        {
+            ZTest Always Zwrite Off
+            CGPROGRAM
+
+            #pragma vertex vert
+            #pragma fragment fragRobertsCrossDepthAndNormal
+
+            ENDCG
+        }
+    }
+    Fallback off
 }
