@@ -21,6 +21,8 @@ public class JumpController : MonoBehaviour
 
     [SerializeField] float climbForce = 1000f;
 
+    public float animThreshold = 1.0f;
+
     void Start()
     {
         transform.position = target.position;
@@ -97,7 +99,7 @@ public class JumpController : MonoBehaviour
 
         playerRigidBody.AddForce(force, ForceMode.Acceleration);
 
-        if (playerRigidBody.velocity.y > 1.0f)
+        if (playerRigidBody.velocity.y > animThreshold)
         {
             isJumping = true;
         }

@@ -6,17 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class PanelStart : MonoBehaviour
 {
-    public GameObject avatar;
-    public GameObject bat;
+    public GameObject items;
 
     void Start()
     {
+        items.SetActive(false);
+
         transform.Find("StartButton").GetComponent<Button>()
             .onClick.AddListener(() =>
             {
-                SceneManager.LoadScene("Bat-Dungeon");
-/*                bat.SetActive(true);
-                avatar.SetActive(false);*/
+                items.SetActive(true);
+                gameObject.SetActive(false);
+            });
+
+        transform.Find("TrainButton").GetComponent<Button>()
+            .onClick.AddListener(() =>
+            {
+                gameObject.SetActive(false);
             });
 
         transform.Find("QuitButton").GetComponent<Button>()

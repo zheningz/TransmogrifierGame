@@ -11,19 +11,19 @@ public class PanelSelect : MonoBehaviour
         transform.Find("SpiderButton").GetComponent<Button>()
             .onClick.AddListener(() =>
             {
-                SceneManager.LoadScene("Spider-Dungeon");
+                SceneManager.LoadScene("Spider-Train");
             });
 
         transform.Find("BatButton").GetComponent<Button>()
             .onClick.AddListener(() =>
             {
-                SceneManager.LoadScene("Bat-Dungeon");
+                SceneManager.LoadScene("Bat-Train");
             });
 
-        transform.Find("CatButton").GetComponent<Button>()
+        transform.Find("FrogButton").GetComponent<Button>()
             .onClick.AddListener(() =>
             {
-                // SceneManager.LoadScene("HomeScene");
+                SceneManager.LoadScene("Frog-Train");
             });
     }
 }

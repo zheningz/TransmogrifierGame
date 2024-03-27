@@ -9,13 +9,10 @@ public class DynamicVision : MonoBehaviour
 
     float defaultTimeScale = 1.0f;
     bool timeToggle = false;
-    HighlightPlus.HighlightEffect highlight;
     Animator anim;
 
     private void Start()
     {
-        highlight  = flyingItem.GetComponent<HighlightPlus.HighlightEffect>();
-        highlight.highlighted = false;
         anim = flyingItem.GetComponent<Animator>();
         anim.speed = defaultTimeScale;
     }
@@ -24,7 +21,6 @@ public class DynamicVision : MonoBehaviour
     {
         if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.LeftShift))
         {
-            highlight.highlighted = !highlight.highlighted;
             timeToggle = !timeToggle;
             anim.speed = timeToggle ? timeScale : defaultTimeScale;
         }
