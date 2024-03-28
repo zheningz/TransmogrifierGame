@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 3.9678442, g: 3.7137027, b: 3.1318517, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 5
+  m_AmbientIntensity: 7
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.8805031, g: 0.8805031, b: 0.8805031, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 841cb9de806930c44ac212dc6b1e8bcb, type: 2}
   m_LightingSettings: {fileID: 1789605329}
 --- !u!196 &4
 NavMeshSettings:
@@ -1384,23 +1384,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1285883522956697221, guid: 5d7f07935b32b7e4cbed393847588ba7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.7684915
+      value: 2.6965802
       objectReference: {fileID: 0}
     - target: {fileID: 1285883522956697221, guid: 5d7f07935b32b7e4cbed393847588ba7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.46491367
+      value: 0.47014222
       objectReference: {fileID: 0}
     - target: {fileID: 1285883522956697221, guid: 5d7f07935b32b7e4cbed393847588ba7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.8675553
+      value: -0.86473304
       objectReference: {fileID: 0}
     - target: {fileID: 1285883522956697221, guid: 5d7f07935b32b7e4cbed393847588ba7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.15569684
+      value: -0.1551903
       objectReference: {fileID: 0}
     - target: {fileID: 1285883522956697221, guid: 5d7f07935b32b7e4cbed393847588ba7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.08343628
+      value: 0.084374614
       objectReference: {fileID: 0}
     - target: {fileID: 2483093114427126781, guid: 5d7f07935b32b7e4cbed393847588ba7, type: 3}
       propertyPath: m_Name
@@ -1408,7 +1408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5924193365433011836, guid: 5d7f07935b32b7e4cbed393847588ba7, type: 3}
       propertyPath: field of view
-      value: 68.54482
+      value: 68.49343
       objectReference: {fileID: 0}
     - target: {fileID: 5924193365433011836, guid: 5d7f07935b32b7e4cbed393847588ba7, type: 3}
       propertyPath: near clip plane
@@ -7613,7 +7613,7 @@ Transform:
   m_GameObject: {fileID: 1976552932}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.024440812, z: -0, w: -0.9997013}
-  m_LocalPosition: {x: 15.36, y: 8.294, z: -8.14}
+  m_LocalPosition: {x: 15.36, y: 8.326, z: -8.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
