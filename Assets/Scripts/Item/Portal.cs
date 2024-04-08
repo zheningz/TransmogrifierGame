@@ -5,14 +5,13 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public GameObject playerOVR;
-    public GameObject otherPortal;
-    public float yOffset = 1.0f;
+    public Vector3 position = new Vector3(171.169998f, 4.51999998f + 2.0f, -102.989998f);
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            playerOVR.transform.position = otherPortal.transform.position + new Vector3(0, yOffset, 0);
+            playerOVR.transform.position = position;
         }
     }
 }
