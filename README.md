@@ -9,7 +9,7 @@ A virtual reality (VR) adventure game that offers players a unique experience of
 
 ## Getting Started
 1. Clone the game repository.
-2. Open the project in Unity (version 20XX.XX.XX or later).
+2. Open the project in Unity.
 3. Navigate to the Scenes folder and open the Home scene.
 4. Connect your VR headset and motion controllers to your computer.
 5. Click play.
